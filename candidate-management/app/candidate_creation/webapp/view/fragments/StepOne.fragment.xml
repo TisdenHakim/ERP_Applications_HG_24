@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <VBox>
+        <Text text="This is a simple fragment with no input fields." />
+    </VBox>
+</core:FragmentDefinition>
