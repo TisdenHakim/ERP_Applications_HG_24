@@ -7,7 +7,7 @@ function (Controller) {
     return Controller.extend("candidatecreation.controller.candidate", {
         onInit: function () {
             this.oDialog = sap.ui.xmlfragment(
-                "candidatecreation.view.fragments.StepOne",  // Match path here
+                "candidatecreation.view.fragments.StepOne",
                 this
             );
             this.getView().addDependent(this.oDialog);
