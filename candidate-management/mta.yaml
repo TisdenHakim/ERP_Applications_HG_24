@@ -1,0 +1,141 @@
+_schema-version: 3.3.0
+ID: candidate-management
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: candidate-management-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: candidate-management-db
+  - name: uaa_candidate-management
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: candidate-management-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: candidate-management-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: candidate-management-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: candidate-management-destination-service
+    parameters:
+      content-target: true
+  - name: candidate-management_html_repo_host
+    parameters:
+      service-key:
+        name: candidate-management_html_repo_host-key
+  - name: uaa_candidate-management
+    parameters:
+      service-key:
+        name: uaa_candidate-management-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: candidates_candidate_management_html_repo_host
+          ServiceInstanceName: candidate-management-html5-app-host-service
+          ServiceKeyName: candidate-management_html_repo_host-key
+          sap.cloud.service: candidates
+        - Authentication: OAuth2UserTokenExchange
+          Name: candidates_uaa_candidate_management
+          ServiceInstanceName: candidate-management-xsuaa-service
+          ServiceKeyName: uaa_candidate-management-key
+          sap.cloud.service: candidates
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: candidate-management-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: candidate-management_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - candidatecreation.zip
+      name: candidatecreation
+      target-path: resources/
+- name: candidatecreation
+  type: html5
+  path: app/candidate_creation
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: candidate-management-db
+  type: com.sap.xs.hdi-container
+  
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+    config:
+      schema: CANDIDATE
+      xsappname: candidate-management
+- name: candidate-management-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: candidate-management-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: candidate-management-destination-service
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: candidate-management_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: candidate-management-html5-app-host-service
+    service-plan: app-host
+- name: uaa_candidate-management
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: candidate-management-xsuaa-service
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production
