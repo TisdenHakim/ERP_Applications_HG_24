@@ -14,15 +14,15 @@ function (Controller) {
             );
 
             //Maken van een JSON model zodat we alle info van de kandidaat hierin kunnen opslagen
-            let oCandidatetModel = new sap.ui.model.json.JSONModel({
-                firstNale: null,
+            let oCandidateModel = new sap.ui.model.json.JSONModel({
+                firstName: null,
                 lastName: null,
                 birthday: null,
                 address: {
                     city          : null,
                     postCode      : null,
                     streetAddress : null,
-                    candidate     : oCandidatetModel
+                    candidate     : null
                 },
                 email: null,
                 department_code: null,
@@ -40,7 +40,7 @@ function (Controller) {
             //Step 1 binden aan de view
             this.getView().addDependent(this.oDialog);
             //Lokaal JSON model binden aan de view
-            this.getView().setModel(oCandidatetModel, 'candidateModel');
+            this.getView().setModel(oCandidateModel, 'candidateModel');
 
         },
         onProspectCreation: function(oEvent){

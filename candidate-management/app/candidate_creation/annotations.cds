@@ -1,1 +1,1 @@
-using ProcessorService as service from '../../srv/services';
+using CandidateService as service from '../../srv/services';
