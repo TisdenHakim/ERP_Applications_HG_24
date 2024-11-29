@@ -2,6 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc" 
     xmlns:core="sap.ui.core" 
     displayBlock="true"
+	xmlns:form="sap.ui.layout.form"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
@@ -20,10 +21,12 @@
 				id="wizardContentPage"
 				showHeader="false">
 					<content>
-						<Wizard id="CreateProductWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+					<Wizard id="CreateProductWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
 								complete="wizardCompletedHandler">
 
                                 <core:Fragment fragmentName="candidatecreation.view.fragments.StepOne" type="XML" />
+                                
+
                             
 							
 						</Wizard>

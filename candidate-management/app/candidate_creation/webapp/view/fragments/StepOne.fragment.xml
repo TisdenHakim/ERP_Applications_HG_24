@@ -12,9 +12,36 @@
         <form:SimpleForm
             editable="true"
             layout="ResponsiveGridLayout">
+
             <Label text="Voornaam" required="true"/>
-            <Input   value="{candidateModel>/firstName}" valueStateText="Enter 6 symbols or more" id="firstName"
+            <Input required="true" value="" 
 			placeholder="Bv. Alain"/>
+
+            <Label text="Achternaam" required="true"/>
+            <Input  required="true" value="" 
+			placeholder="Bv. Vandamme"/>
+
+            <Label text="Geboortedatum" labelFor="DP1" required="true"/>
+				<DatePicker
+                
+					id="DP1"
+                    required="true"
+					placeholder="Bv. 20/06/1970"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+
+            <Label text="e-mailadres" labelFor="emailInput" required="true" />
+            <Input
+            id="emailInput"
+            required="true"
+            type="Email"
+            placeholder="Bv. alain.protput@vandamme.be"
+            value=""
+            change=".checkIfEmailIsWrong" />
+        
+            <Text id="emailValidationText" text="Vul een geldig mail adres in!" visible="false" />
+
+
         </form:SimpleForm>
     </WizardStep>
     

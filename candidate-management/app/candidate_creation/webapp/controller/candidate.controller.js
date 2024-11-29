@@ -68,6 +68,47 @@ function (Controller) {
 					title : "Unexpected Error"
 				});
 			});
+        },
+        checkIfEmailIsWrong: function (oEvent) {
+            const sEmail = oEvent.getParameter("value");
+            const oValidationText = this.byId("emailValidationText");
+      
+            // Simple email regex validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(sEmail)) {
+              oValidationText.setVisible(true);
+              return true;
+            } else {
+              oValidationText.setText("");
+              oValidationText.setVisible(false);
+              return false;
+            }
+          },
+          function (MessageToast) {
+            "use strict";
+            
+            return {
+                onStepComplete: function () {
+                    // Haal de waarde van de inputs op
+                    const voornaam = this.byId("VoornaamInput").getValue();
+                    const achternaam = this.byId("AchternaamInput").getValue();
+                    const geboortedatum = this.byId("DP1").getDateValue();
+                    const email = this.byId("emailInput").getValue();
+        
+                    // Controleer of velden leeg zijn
+                    if (!voornaam || !achternaam || !geboortedatum || !email) {
+                        MessageToast.show("Gelieve alle verplichte velden in te vullen.");
+                        return false; // voorkomt doorgaan naar de volgende stap
+                    }
+        
+                    // Optioneel: extra validatie zoals e-mailcontrole
+                    if (checkIfEmailIsWrong(email)) {
+                        return false;
+                    }
+                    // Als alles correct is, ga verder
+                    return true;
+                }
+            }
         }
     });
 });
