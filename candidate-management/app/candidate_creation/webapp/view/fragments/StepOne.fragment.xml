@@ -14,16 +14,16 @@
             layout="ResponsiveGridLayout">
 
             <Label text="Voornaam" required="true"/>
-            <Input required="true" value="" 
+            <Input required="true" value="{candidateModel>/firstName}"
 			placeholder="Bv. Alain"/>
 
             <Label text="Achternaam" required="true"/>
-            <Input  required="true" value="" 
+            <Input  required="true" value="{candidateModel>/lastName}" 
 			placeholder="Bv. Vandamme"/>
 
             <Label text="Geboortedatum" labelFor="DP1" required="true"/>
 				<DatePicker
-                
+                    value="{candidateModel>/birthday}"
 					id="DP1"
                     required="true"
 					placeholder="Bv. 20/06/1970"
@@ -32,22 +32,22 @@
 
             <Label text="e-mailadres" labelFor="emailInput" required="true" />
             <Input
+            value="{candidateModel>/email}"
             id="emailInput"
             required="true"
             type="Email"
             placeholder="Bv. alain.protput@vandamme.be"
-            value=""
             change=".checkIfEmailIsWrong" />
         
             <Text id="emailValidationText" text="Vul een geldig mail adres in!" visible="false" />
             
+
             <Label text="Taal"/>
-		    <Select selectedKey="{/productManufacturer}">
-		    <core:Item key="NL" text="Nederlands"/>
-		    <core:Item key="FR" text="Frans"/>
-		    <core:Item key="EN" text="Engels"/>
-		    <core:Item key="DE" text="Duits"/>
-		    </Select>
+            <Select forceSelection="false" selectedKey="{candidateModel>/language}" 
+            items="{path: '/Language',sorter: { path: 'descr' }}">
+              <core:Item key="{code}" text="{descr}" />
+
+            </Select>
 
         </form:SimpleForm>
     </WizardStep>
