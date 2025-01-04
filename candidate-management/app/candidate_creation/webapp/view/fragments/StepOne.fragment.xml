@@ -40,7 +40,14 @@
             change=".checkIfEmailIsWrong" />
         
             <Text id="emailValidationText" text="Vul een geldig mail adres in!" visible="false" />
-
+            
+            <Label text="Taal"/>
+		    <Select selectedKey="{/productManufacturer}">
+		    <core:Item key="NL" text="Nederlands"/>
+		    <core:Item key="FR" text="Frans"/>
+		    <core:Item key="EN" text="Engels"/>
+		    <core:Item key="DE" text="Duits"/>
+		    </Select>
 
         </form:SimpleForm>
     </WizardStep>

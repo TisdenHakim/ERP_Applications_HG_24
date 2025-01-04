@@ -1,4 +1,5 @@
-using { cuid, managed, sap.common.CodeList } from '@sap/cds/common';
+using { cuid, managed, sap.common.CodeList, Country } from '@sap/cds/common';
+
 namespace sap.capire.candidates; 
 
 entity Candidate : cuid, managed {  
@@ -20,6 +21,7 @@ entity Address : cuid, managed {
     city          : String;
     postCode      : String;
     streetAddress : String;
+    country       : Country;
     candidate     : Association to Candidate;
 }
 
@@ -48,7 +50,7 @@ entity Language : CodeList {
     key code: String enum {
         english = 'EN'; 
         dutch = 'NL'; 
-        german = 'GE'; 
+        german = 'DE'; 
         french = 'FR'; 
     };
 }
