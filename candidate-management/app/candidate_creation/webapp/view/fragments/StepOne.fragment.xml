@@ -44,7 +44,7 @@
 
             <Label text="Taal"/>
             <Select forceSelection="false" selectedKey="{candidateModel>/language}" 
-            items="{path: '/Language',sorter: { path: 'descr' }}">
+            items="{path: '/Language',sorter: { path: 'descr', descending: true }}">
               <core:Item key="{code}" text="{descr}" />
 
             </Select>
