@@ -48,8 +48,8 @@
             <Text id="emailValidationText" text="Vul een geldig mail adres in!" visible="false" />
             
 
-            <Label text="Taal"/>
-            <Select forceSelection="false" selectedKey="{candidateModel>/language}" 
+            <Label text="Taal" required="true"/>
+            <Select required="true" forceSelection="false" selectedKey="{candidateModel>/language}" 
             items="{path: '/Language',sorter: { path: 'descr', descending: true }}">
               <core:Item key="{code}" text="{descr}" />
             </Select>

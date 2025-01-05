@@ -33,6 +33,12 @@
             <Input type="Number" required="false" value="{candidateModel>/address>appartment}" 
 			placeholder="Bv. 4D"/>
 
+            <Label text="Land" required="true"/>
+            <Select forceSelection="false" selectedKey="{candidateModel>/address>country}" 
+            items="{path: '/Countries',sorter: { path: 'descr' }}">
+              <core:Item key="{code}" text="{descr}" />
+            </Select>
+
 
           
         </form:SimpleForm>

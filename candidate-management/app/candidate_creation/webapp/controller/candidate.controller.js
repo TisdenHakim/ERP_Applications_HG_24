@@ -20,7 +20,10 @@ function (Controller) {
                 address: {
                     city: null,
                     postCode: null,
-                    streetAddress: null,
+                    street: null,
+                    number: null,
+                    appartement: null,
+                    country: "BE",
                     candidate: null
                 },
                 email: null,
