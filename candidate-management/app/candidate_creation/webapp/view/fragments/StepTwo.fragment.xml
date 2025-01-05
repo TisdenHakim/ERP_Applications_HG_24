@@ -1,2 +1,29 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form">
+ 
+    <WizardStep id="StepTwo"
+        title="Rest informatie"
+        validated="false"
+		activate="true">
+        <Text class="sapUiSmallMarginBottom"
+            text="Vul de basisgegevens van de kandidaat in. Dit omvat de kerninformatie die nodig is om de kandidaat te identificeren en contact met hen op te nemen."/>
+
+        <form:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout">
+
+            <Label text="Voornaam" required="true"/>
+            <Input required="true" value="{candidateModel>/firstName}"
+			placeholder="Bv. Alain"/>
+
+            <Label text="Achternaam" required="true"/>
+            <Input  required="true" value="{candidateModel>/lastName}" 
+			placeholder="Bv. Vandamme"/>
+
+           
+
+        </form:SimpleForm>
+    </WizardStep>
+    
 </core:FragmentDefinition>

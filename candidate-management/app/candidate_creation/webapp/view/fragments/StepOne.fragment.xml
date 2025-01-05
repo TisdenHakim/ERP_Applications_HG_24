@@ -5,7 +5,7 @@
     <WizardStep id="StepOne"
         title="Basis informatie"
         validated="false"
-		activate="true">
+		>
         <Text class="sapUiSmallMarginBottom"
             text="Vul de basisgegevens van de kandidaat in. Dit omvat de kerninformatie die nodig is om de kandidaat te identificeren en contact met hen op te nemen."/>
 
@@ -14,11 +14,15 @@
             layout="ResponsiveGridLayout">
 
             <Label text="Voornaam" required="true"/>
-            <Input required="true" value="{candidateModel>/firstName}"
-			placeholder="Bv. Alain"/>
+            <Input
+            id="firstName" 
+            required="true" value="{candidateModel>/firstName}"
+			placeholder="Bv. Alain"
+            liveChange="stepOneValidation"
+            />
 
             <Label text="Achternaam" required="true"/>
-            <Input  required="true" value="{candidateModel>/lastName}" 
+            <Input  required="true" value="{candidateModel>/lastName}" liveChange="stepOneValidation"
 			placeholder="Bv. Vandamme"/>
 
             <Label text="Geboortedatum" labelFor="DP1" required="true"/>
@@ -28,6 +32,7 @@
                     required="true"
 					placeholder="Bv. 20/06/1970"
 					change="handleChange"
+                    liveChange="stepOneValidation"
 					class="sapUiSmallMarginBottom"/>
 
             <Label text="e-mailadres" labelFor="emailInput" required="true" />
@@ -37,7 +42,8 @@
             required="true"
             type="Email"
             placeholder="Bv. alain.protput@vandamme.be"
-            change=".checkIfEmailIsWrong" />
+            liveChange="stepOneValidation"
+            />
         
             <Text id="emailValidationText" text="Vul een geldig mail adres in!" visible="false" />
             

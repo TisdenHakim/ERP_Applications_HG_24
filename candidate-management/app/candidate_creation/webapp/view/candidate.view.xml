@@ -25,6 +25,8 @@
 								complete="wizardCompletedHandler">
 
                                 <core:Fragment fragmentName="candidatecreation.view.fragments.StepOne" type="XML" />
+                                <core:Fragment fragmentName="candidatecreation.view.fragments.StepTwo" type="XML" />
+
                                 
 
                             
