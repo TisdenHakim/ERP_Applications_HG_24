@@ -3,26 +3,38 @@
     xmlns:form="sap.ui.layout.form">
  
     <WizardStep id="StepTwo"
-        title="Rest informatie"
+        title="Adres"
         validated="false"
 		activate="true">
         <Text class="sapUiSmallMarginBottom"
-            text="Vul de basisgegevens van de kandidaat in. Dit omvat de kerninformatie die nodig is om de kandidaat te identificeren en contact met hen op te nemen."/>
+            text="Geef de woonplaats van de kandidaat op. Deze informatie is essentieel om de kandidaat correct te identificeren en eenvoudig contact met hen op te nemen."/>
 
         <form:SimpleForm
             editable="true"
             layout="ResponsiveGridLayout">
 
-            <Label text="Voornaam" required="true"/>
-            <Input required="true" value="{candidateModel>/firstName}"
-			placeholder="Bv. Alain"/>
+            <Label text="Stad" required="true"/>
+            <Input required="true" value="{candidateModel>/address>city}"
+			placeholder="Bv. Antwerpen"/>
 
-            <Label text="Achternaam" required="true"/>
-            <Input  required="true" value="{candidateModel>/lastName}" 
-			placeholder="Bv. Vandamme"/>
+            <Label text="Postcode" required="true"/>
+            <Input  required="true" value="{candidateModel>/address>postCode}" 
+			placeholder="Bv. 2000"/>
 
-           
+            <Label text="Straat" required="true"/>
+            <Input  required="true" value="{candidateModel>/address>street}" 
+			placeholder="Bv. Tramstraat"/>
 
+            <Label text="Nummer" required="true"/>
+            <Input type="Number" required="true" value="{candidateModel>/address>number}" 
+			placeholder="Bv. 2"/>
+
+            <Label text="Bus" required="false"/>
+            <Input type="Number" required="false" value="{candidateModel>/address>appartment}" 
+			placeholder="Bv. 4D"/>
+
+
+          
         </form:SimpleForm>
     </WizardStep>
     

@@ -20,10 +20,14 @@ entity Candidate : cuid, managed {
 entity Address : cuid, managed {
     city          : String;
     postCode      : String;
-    streetAddress : String;
+    street        : String;
+    number        : Int16;
+    appartment    : String;
     country       : Country;
     candidate     : Association to Candidate;
 }
+
+
 
 entity Department : CodeList {
     key code: String enum {
