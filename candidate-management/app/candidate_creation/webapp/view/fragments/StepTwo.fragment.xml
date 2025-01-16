@@ -14,29 +14,29 @@
             layout="ResponsiveGridLayout">
 
             <Label text="Stad" required="true"/>
-            <Input required="true" value="{candidateModel>/address>city}"
+            <Input id="stadInput" required="true" value="{candidateModel>/address>city}" liveChange="stepTwoValidation"
 			placeholder="Bv. Antwerpen"/>
 
             <Label text="Postcode" required="true"/>
-            <Input  required="true" value="{candidateModel>/address>postCode}" 
+            <Input id="postcodeInput" required="true" value="{candidateModel>/address>postCode}" liveChange="stepTwoValidation"
 			placeholder="Bv. 2000"/>
 
             <Label text="Straat" required="true"/>
-            <Input  required="true" value="{candidateModel>/address>street}" 
+            <Input id="straatInput" required="true" value="{candidateModel>/address>street}" liveChange="stepTwoValidation"
 			placeholder="Bv. Tramstraat"/>
 
             <Label text="Nummer" required="true"/>
-            <Input type="Number" required="true" value="{candidateModel>/address>number}" 
+            <Input id="nummerInput" type="Number" required="true" value="{candidateModel>/address>number}" liveChange="stepTwoValidation"
 			placeholder="Bv. 2"/>
 
             <Label text="Bus" required="false"/>
-            <Input type="Number" required="false" value="{candidateModel>/address>appartment}" 
+            <Input id="busInput" type="Number" required="false" value="{candidateModel>/address>appartment}" liveChange="stepTwoValidation"
 			placeholder="Bv. 4D"/>
 
             <Label text="Land" required="true"/>
-            <Select forceSelection="false" selectedKey="{candidateModel>/address>country}" 
-            items="{path: '/Countries',sorter: { path: 'descr' }}">
-              <core:Item key="{code}" text="{descr}" />
+            <Select id="landInput" forceSelection="false" selectedKey="{candidateModel>/address>country}" 
+            items="{path: '/Countries',sorter: { path: 'descr' }}" change="stepTwoValidation"> 
+              <core:Item  key="{code}" text="{descr}" />
             </Select>
 
 

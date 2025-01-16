@@ -58,6 +58,7 @@ function (Controller) {
     },
 
         stepOneValidation: function () {
+            //TO DO ipv omodel te gebruiken input velden rechstreeks aanspreken, omdat er een vertraging anders opzit
             let oModel = this.getView().getModel("candidateModel").getData();
             let firstName = oModel.firstName || ""; // Zorg ervoor dat dit een lege string is als het null is
             let lastName = oModel.lastName || "";  // Zorg ervoor dat dit een lege string is als het null is
@@ -72,6 +73,32 @@ function (Controller) {
                 console.log("Niks klopt");
             }
         },
+
+        stepTwoValidation: function () {
+            // Nodige elementen aanspreken
+            let stepTwo = this.byId("StepTwo");
+        
+            // Data van velden inlezen
+            let stad = this.getView().byId("stadInput").getValue();
+            let postcode = this.getView().byId("postcodeInput").getValue();
+            let nummer = this.getView().byId("nummerInput").getValue();
+            let bus = this.getView().byId("busInput").getValue();
+            let land = this.getView().byId("landInput").getSelectedKey();
+        
+            // Check of alles deftig is ingevuld
+            if (stad.length >= 1 && postcode.length >= 1 && nummer >= 1 && bus.length >= 1 && land.length >= 1) {
+                stepTwo.setValidated(true);
+                console.log("Alles klopt");
+            } else {
+                console.log("Niks klopt");
+                stepTwo.setValidated(false);
+            }
+        },
+        
+
+
+
+
 
         onProspectCreation: function (oEvent) {
             var oModel = this.getOwnerComponent().getModel();
