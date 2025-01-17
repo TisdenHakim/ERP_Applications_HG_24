@@ -33,6 +33,7 @@
 					placeholder="Bv. 1 jan 1970"
 					change="handleChange"
                     liveChange="stepOneValidation"
+                    valueFormat="yyyy-MM-dd" 
 					class="sapUiSmallMarginBottom"/>
 
             <Label text="e-mailadres" labelFor="emailInput" required="true" />

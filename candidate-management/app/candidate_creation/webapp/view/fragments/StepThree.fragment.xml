@@ -36,6 +36,7 @@
                     required="true"
 					placeholder="Bv. 1 juni 2025"
 					change="handleChange"
+                      valueFormat="yyyy-MM-dd" 
                     liveChange="stepThreeValidation"
 					class="sapUiSmallMarginBottom"/>
             
