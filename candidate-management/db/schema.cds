@@ -9,12 +9,13 @@ entity Candidate : cuid, managed {
     birthday         : Date    @title : 'Birthday';
     address          : Composition of Address on address.candidate = $self;
     email            : EMailAddress;
-    department       : Association to Department;
-    contractType     : Association to ContractType;
+    department_code       : Association to Department;
+    contract_code     : Association to ContractType;
     rapportTo        : String   @title : 'Reports To';
     language         : Association to Language default 'NL';
+    startdate           :  Date    @title : 'Start date';
     lengthOfService  : Int16    @title : 'Length of Service';
-    status           : Association to Status;
+    status_code           : Association to Status;
 }
 
 entity Address : cuid, managed {

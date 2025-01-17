@@ -28,7 +28,6 @@ function (Controller, MessageBox) {
                 contract_code: null,
                 rapportTo: null,
                 language: "NL",
-                prioriteit_code: null,
                 startdate: null,
                 lengthOfService: null,
                 status_code: null
