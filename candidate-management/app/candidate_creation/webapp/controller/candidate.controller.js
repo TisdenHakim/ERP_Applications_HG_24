@@ -32,6 +32,7 @@ function (Controller) {
                 rapportTo: null,
                 language: "NL",
                 prioriteit_code: null,
+                startdate: null,
                 lengthOfService: null,
                 status_code: null
             });
@@ -82,11 +83,10 @@ function (Controller) {
             let stad = this.getView().byId("stadInput").getValue();
             let postcode = this.getView().byId("postcodeInput").getValue();
             let nummer = this.getView().byId("nummerInput").getValue();
-            let bus = this.getView().byId("busInput").getValue();
             let land = this.getView().byId("landInput").getSelectedKey();
         
             // Check of alles deftig is ingevuld
-            if (stad.length >= 1 && postcode.length >= 1 && nummer >= 1 && bus.length >= 1 && land.length >= 1) {
+            if (stad.length >= 1 && postcode.length >= 1 && nummer >= 1 && land.length >= 1) {
                 stepTwo.setValidated(true);
                 console.log("Alles klopt");
             } else {
@@ -94,11 +94,28 @@ function (Controller) {
                 stepTwo.setValidated(false);
             }
         },
+        stepThreeValidation: function () {
+            // Nodige elementen aanspreken
+            let stepThree = this.byId("StepThree");
         
+            // Data van velden inlezen
+            let afdeling = this.getView().byId("afdelingInput").getSelectedKey();
+            let contract = this.getView().byId("contractInput").getSelectedKey();
+            let rapportTo = this.getView().byId("rapportInput").getValue();
+            let startdate = this.getView().byId("DP2").getValue();
+            let ancienniteit = this.getView().byId("ancienniteitInput").getValue();
 
-
-
-
+        
+            // Check of alles deftig is ingevuld
+            if (afdeling.length >= 1 && contract.length >= 1 && ancienniteit >= 1 && rapportTo.length >= 1 && startdate.length) {
+                stepThree.setValidated(true);
+                console.log("Alles klopt");
+            } else {
+                console.log("Niks klopt");
+                stepThree.setValidated(false);
+            }
+        },
+        
 
         onProspectCreation: function (oEvent) {
             var oModel = this.getOwnerComponent().getModel();

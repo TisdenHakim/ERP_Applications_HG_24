@@ -30,7 +30,7 @@
                     value="{candidateModel>/birthday}"
 					id="DP1"
                     required="true"
-					placeholder="Bv. 20/06/1970"
+					placeholder="Bv. 1 jan 1970"
 					change="handleChange"
                     liveChange="stepOneValidation"
 					class="sapUiSmallMarginBottom"/>

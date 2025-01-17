@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form">
+ 
+    <WizardStep id="StepThree"
+        title="Werk informatie"
+        validated="false"
+		>
+        <Text class="sapUiSmallMarginBottom"
+            text="Vul de resterende gegevens van de kandidaat in. Dit omvat de werkinformatie die nodig is om de kandidaat te werk te stellen."/>
+
+        <form:SimpleForm
+            editable="true"
+            layout="ResponsiveGridLayout">
+
+            <Label text="Afdeling" required="true"/>
+            <Select id="afdelingInput" forceSelection="false" selectedKey="{candidateModel>/department_code}" 
+                items="{path: '/Department',sorter: { path: 'descr' }}" change="stepThreeValidation"> 
+              <core:Item  key="{code}" text="{descr}" />
+            </Select>
+
+            <Label text="Contract type" required="true"/>
+            <Select id="contractInput" forceSelection="false" selectedKey="{candidateModel>/contract_code}" 
+                items="{path: '/ContractType',sorter: { path: 'descr' }}" change="stepThreeValidation"> 
+              <core:Item  key="{code}" text="{descr}" />
+            </Select>
+
+            <Label text="Rapporteert naar" required="true"/>
+            <Input id="rapportInput" required="true" value="{candidateModel>/rapportTo}" liveChange="stepThreeValidation"
+			placeholder="Bv. Bert van de boekhouding"/>
+
+            <Label text="Start datum" labelFor="DP2" required="true"/>
+				<DatePicker
+                    value="{candidateModel>/startdate}"
+					id="DP2"
+                    required="true"
+					placeholder="Bv. 1 juni 2025"
+					change="handleChange"
+                    liveChange="stepThreeValidation"
+					class="sapUiSmallMarginBottom"/>
+            
+            <Label text="Anciënniteit (in jaren)" required="true"/>
+            <Input id="ancienniteitInput" type="Number" required="true" value="{candidateModel>/lengthOfService}" liveChange="stepThreeValidation"
+			placeholder="Bv. 2"/>
+
+        </form:SimpleForm>
+    </WizardStep>
+    
+</core:FragmentDefinition>

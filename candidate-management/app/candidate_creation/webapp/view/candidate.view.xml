@@ -26,11 +26,8 @@
 
                                 <core:Fragment fragmentName="candidatecreation.view.fragments.StepOne" type="XML" />
                                 <core:Fragment fragmentName="candidatecreation.view.fragments.StepTwo" type="XML" />
+                                <core:Fragment fragmentName="candidatecreation.view.fragments.StepThree" type="XML" />
 
-                                
-
-                            
-							
 						</Wizard>
 					</content>
 					<footer>
