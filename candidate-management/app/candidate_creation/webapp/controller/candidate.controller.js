@@ -1,7 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageBox"
 ],
-function (Controller) {
+function (Controller, MessageBox) {
     "use strict";
 
     return Controller.extend("candidatecreation.controller.candidate", {
@@ -18,7 +19,7 @@ function (Controller) {
                     postCode: null,
                     street: null,
                     number: null,
-                    appartement: null,
+                    appartment: null,
                     country: "BE",
                     candidate: null
                 },
@@ -53,6 +54,15 @@ function (Controller) {
         }
     
     },
+		_handleNavigationToStep: function (iStepNumber) {
+			var fnAfterNavigate = function () {
+				this._wizard.goToStep(this._wizard.getSteps()[iStepNumber]);
+				this._oNavContainer.detachAfterNavigate(fnAfterNavigate);
+			}.bind(this);
+
+			this._oNavContainer.attachAfterNavigate(fnAfterNavigate);
+			this.backToWizardContent();
+		},
     wizardCompletedHandler: function () {
         this._oNavContainer.to(this.byId("wizardReviewPage"));
     },
@@ -75,6 +85,9 @@ function (Controller) {
         },
 
         stepTwoValidation: function () {
+            let oModel = this.getView().getModel("candidateModel").getData();
+            console.log(oModel.address); // Controleer of de waarden correct zijn
+            
             // Nodige elementen aanspreken
             let stepTwo = this.byId("StepTwo");
         
@@ -133,6 +146,20 @@ function (Controller) {
                         title: "Unexpected Error"
                     });
                 });
-        }
+        },
+        
+        _handleMessageBoxOpen: function (sMessage, sMessageBoxType) {
+			MessageBox[sMessageBoxType](sMessage, {
+				actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+				onClose: function (oAction) {
+					if (oAction === MessageBox.Action.YES) {
+                        this.onProspectCreation();
+					}
+				}.bind(this)
+			});
+		},
+        handleWizardSubmit: function () {
+			this._handleMessageBoxOpen("Are you sure you want to submit your report?", "confirm");
+		},
     });
 });
