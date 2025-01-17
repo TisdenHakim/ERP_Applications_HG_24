@@ -14,27 +14,27 @@
             layout="ResponsiveGridLayout">
 
             <Label text="Stad" required="true"/>
-            <Input id="stadInput" required="true" value="{candidateModel>/address>city}" liveChange="stepTwoValidation"
+            <Input id="stadInput" required="true" value="{candidateModel>/address/city}" liveChange="stepTwoValidation"
 			placeholder="Bv. Antwerpen"/>
 
             <Label text="Postcode" required="true"/>
-            <Input id="postcodeInput" required="true" value="{candidateModel>/address>postCode}" liveChange="stepTwoValidation"
+            <Input id="postcodeInput" required="true" value="{candidateModel>/address/postCode}" liveChange="stepTwoValidation"
 			placeholder="Bv. 2000"/>
 
             <Label text="Straat" required="true"/>
-            <Input id="straatInput" required="true" value="{candidateModel>/address>street}" liveChange="stepTwoValidation"
+            <Input id="straatInput" required="true" value="{candidateModel>/address/street}" liveChange="stepTwoValidation"
 			placeholder="Bv. Tramstraat"/>
 
             <Label text="Nummer" required="true"/>
-            <Input id="nummerInput" type="Number" required="true" value="{candidateModel>/address>number}" liveChange="stepTwoValidation"
+            <Input id="nummerInput" type="Number" required="true" value="{candidateModel>/address/number}" liveChange="stepTwoValidation"
 			placeholder="Bv. 2"/>
 
             <Label text="Bus" required="false"/>
-            <Input id="busInput" type="Number" required="false" value="{candidateModel>/address>appartment}" liveChange="stepTwoValidation"
+            <Input id="busInput" type="Number" required="false" value="{candidateModel>/address/appartment}" liveChange="stepTwoValidation"
 			placeholder="Bv. 4D"/>
 
             <Label text="Land" required="true"/>
-            <Select id="landInput" forceSelection="false" selectedKey="{candidateModel>/address>country}" 
+            <Select id="landInput" forceSelection="false" selectedKey="{candidateModel>/address/country}" 
             items="{path: '/Countries',sorter: { path: 'descr' }}" change="stepTwoValidation"> 
               <core:Item  key="{code}" text="{descr}" />
             </Select>
