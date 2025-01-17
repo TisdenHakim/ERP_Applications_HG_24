@@ -46,7 +46,6 @@
 						<Bar>
 							<contentRight>
 								<Button text="Submit" press="handleWizardSubmit"/>
-								<Button text="Cancel" press="handleWizardCancel"/>
 							</contentRight>
 						</Bar>
 					</footer>

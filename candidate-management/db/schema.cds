@@ -29,6 +29,8 @@ entity Address : cuid, managed {
 
 
 
+
+
 entity Department : CodeList {
     key code: String enum {
         HR = 'HR';
