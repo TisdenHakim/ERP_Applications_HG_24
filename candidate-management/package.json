@@ -23,16 +23,20 @@
     "undeploy": "cf undeploy candidate-management --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "approuter": "cds bind --exec -- npm start --prefix approuter"
+    "approuter": "cds bind --exec -- npm start --prefix approuter",
+    "watch-candidate_management": "cds watch --open candidate_management/webapp/index.html?sap-ui-xx-viewCache=false"
   },
-"requires": {
-  "auth": {
-    "kind": "xsuaa"
-  },
-  "[hybrid]": {
+  "requires": {
     "auth": {
-      "kind": "jwt-auth"
+      "kind": "xsuaa"
+    },
+    "[hybrid]": {
+      "auth": {
+        "kind": "jwt-auth"
+      }
     }
-  }
-}
+  },
+  "sapux": [
+    "app/candidate_management"
+  ]
 }
