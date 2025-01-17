@@ -6,51 +6,57 @@ annotate service.Candidate with @(
             {
                 $Type : 'UI.DataField',
                 Value : firstName,
+                Label : '{i18n>Firstname}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : lastName,
+                Label : '{i18n>Lastname}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : birthday,
+                Label : '{i18n>Birthday}',
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'email',
+                Label : '{i18n>Email}',
                 Value : email,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'department_code_code',
-                Value : department_code_code,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'contract_code_code',
-                Value : contract_code_code,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : rapportTo,
-            },
-            {
-                $Type : 'UI.DataField',
-                Label : 'language_code',
-                Value : language_code,
+                Label : '{i18n>ReportsTo}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : startdate,
+                Label : '{i18n>StartDate}',
             },
             {
                 $Type : 'UI.DataField',
                 Value : lengthOfService,
+                Label : '{i18n>LengthOfService}',
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'status_code_code',
-                Value : status_code_code,
+                Value : department_code.name,
+                Label : '{i18n>Department}',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : contract_code.name,
+                Label : '{i18n>Contract}',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : language.name,
+                Label : '{i18n>Language}',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : status_code.name,
+                Label : '{i18n>Status}',
             },
         ],
     },
@@ -77,12 +83,12 @@ annotate service.Candidate with @(
         },
         {
             $Type : 'UI.DataField',
-            Label : 'email',
+            Label : 'Email',
             Value : email,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'department_code_code',
+            Label : 'Departement',
             Value : department_code_code,
         },
     ],
