@@ -31,22 +31,22 @@
 								layout="ResponsiveGridLayout">
 							<form:content>
 								<Label text="Stad"/>
-								<Text id="review_city" text="{candidateModel>/address>city}"/>
+								<Text id="review_city" text="{candidateModel>/address/city}"/>
 
 								<Label text="Postcode"/>
-								<Text id="review_postalcode" text="{candidateModel>/address>postCode}"/>
+								<Text id="review_postalcode" text="{candidateModel>/address/postCode}"/>
 
 								<Label text="Straat"/>
-								<Text id="review_street" text="{candidateModel>/address>street}"/>
+								<Text id="review_street" text="{candidateModel>/address/street}"/>
 
 								<Label text="Nummer"/>
-								<Text id="review_number" text="{candidateModel>/address>number}"/>
+								<Text id="review_number" text="{candidateModel>/address/number}"/>
 
 								<Label text="Bus"/>
-								<Text id="review_appartment" text="{candidateModel>/address>appartment}"/>
+								<Text id="review_appartment" text="{candidateModel>/address/appartment}"/>
 
 								<Label text="Land"/>
-								<Text id="review_country" text="{candidateModel>/address>country}"/>		
+								<Text id="review_country" text="{candidateModel>/address/country}"/>		
 							</form:content>
 						</form:SimpleForm>
 
