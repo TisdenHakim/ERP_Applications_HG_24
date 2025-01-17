@@ -14,7 +14,7 @@ entity Candidate : cuid, managed {
     language         : Association to Language default 'NL';
     startdate           :  Date    @title : 'Start date';
     lengthOfService  : Int16    @title : 'Length of Service';
-    status_code           : Association to Status;
+    status_code           : String;
 }
 
 entity Address : cuid, managed {
@@ -58,13 +58,6 @@ entity Language : CodeList {
         dutch = 'NL'; 
         german = 'DE'; 
         french = 'FR'; 
-    };
-}
-
-entity Status : CodeList {
-    key code: String enum {
-        approved = 'A';
-        rejected = 'R';
     };
 }
 

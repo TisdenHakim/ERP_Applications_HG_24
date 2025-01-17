@@ -1,4 +1,6 @@
 using CandidateService as service from '../../srv/services';
+using from '../../db/schema';
+
 annotate service.Candidate with @(
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
@@ -53,13 +55,28 @@ annotate service.Candidate with @(
                 Value : language.name,
                 Label : '{i18n>Language}',
             },
-            {
+             {
                 $Type : 'UI.DataField',
-                Value : status_code.name,
-                Label : '{i18n>Status}',
-            },
+                Value : status_code,
+                Label : '{i18n>Language}',
+            }
         ],
     },
+
+    UI.HeaderInfo: {
+        $Type: 'UI.HeaderInfoType',
+        TypeName: 'Candidate',
+        TypeNamePlural: 'Candidate',
+        Description: {
+            $Type: 'UI.DataField',
+            Value: firstName
+        },
+        Title: {
+            $Type: 'UI.DataField',
+            Value: lastName
+        }
+    },
+
     UI.Facets : [
         {
             $Type : 'UI.ReferenceFacet',
@@ -92,5 +109,32 @@ annotate service.Candidate with @(
             Value : department_code_code,
         },
     ],
+    UI.SelectionFields : [
+        firstName,
+        email,
+        status_code,
+        rapportTo,
+        contract_code.name,
+    ],
 );
+
+annotate service.Candidate with {
+    email @Common.Label : '{i18n>Email}'
+};
+
+annotate service.Candidate with {
+    status_code @Common.Label : '{i18n>Status}'
+};
+
+annotate service.ContractType with {
+    name @Common.Label : '{i18n>Contract type}'
+};
+
+annotate service.Candidate with {
+    rapportTo @Common.Label : '{i18n>ReportsTo}'
+};
+
+annotate service.Candidate with {
+    firstName @Common.Label : '{i18n>Firstname}'
+};
 
