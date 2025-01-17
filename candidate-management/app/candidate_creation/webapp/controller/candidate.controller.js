@@ -130,9 +130,17 @@ function (Controller, MessageBox) {
 
         onProspectCreation: function (oEvent) {
             var oModel = this.getOwnerComponent().getModel();
+            var oCandidateData = this.getView().getModel("candidateModel").getData();
+        
+            // Zorg ervoor dat de associaties correct worden ingesteld
+            oCandidateData.language = { code: oCandidateData.language }; // Zet taal om naar een object met code
+            oCandidateData.address.country = { code: oCandidateData.address.country }; // Zet land om naar een object met code
+            oCandidateData.department_code = { code: oCandidateData.department_code }; // Zet department om naar een object met code
+            oCandidateData.contract_code = { code: oCandidateData.contract_code }; // Zet contract om naar een object met code
+        
             var oListBinding = oModel.bindList("/Candidate", undefined, undefined, undefined, { $$updateGroupId: "createCandidate" });
-            var oContext = oListBinding.create(this.getView().getModel("candidateModel").getData());
-
+            var oContext = oListBinding.create(oCandidateData);
+        
             this.getOwnerComponent().getModel().submitBatch("createCandidate")
                 .then(function () {
                     MessageBox.alert("Changes have been saved", {
@@ -145,7 +153,8 @@ function (Controller, MessageBox) {
                         title: "Unexpected Error"
                     });
                 });
-        },
+        }
+        ,
         
         _handleMessageBoxOpen: function (sMessage, sMessageBoxType) {
 			MessageBox[sMessageBoxType](sMessage, {
