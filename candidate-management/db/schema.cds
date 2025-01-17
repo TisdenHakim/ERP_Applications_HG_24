@@ -3,7 +3,6 @@ using { cuid, managed, sap.common.CodeList, Country } from '@sap/cds/common';
 namespace sap.capire.candidates; 
 
 entity Candidate : cuid, managed {  
-    key ID            : String;
     firstName        : String  @title : 'Firstname';
     lastName         : String  @title : 'Lastname';
     birthday         : Date    @title : 'Birthday';
