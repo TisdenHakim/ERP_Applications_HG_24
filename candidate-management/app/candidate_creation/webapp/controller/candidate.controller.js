@@ -6,11 +6,7 @@ function (Controller) {
 
     return Controller.extend("candidatecreation.controller.candidate", {
         onInit: function () {
-            // Zoeken van Stap 1 als fragment voor de wizard
-            this.oDialog = sap.ui.xmlfragment(
-                "candidatecreation.view.fragments.StepOne",
-                this
-            );
+            this._oNavContainer = this.byId("wizardNavContainer");
 
             // Maken van een JSON model zodat we alle info van de kandidaat hierin kunnen opslagen
             let oCandidateModel = new sap.ui.model.json.JSONModel({
@@ -56,6 +52,9 @@ function (Controller) {
             return true;
         }
     
+    },
+    wizardCompletedHandler: function () {
+        this._oNavContainer.to(this.byId("wizardReviewPage"));
     },
 
         stepOneValidation: function () {

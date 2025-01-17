@@ -1,0 +1,78 @@
+<core:FragmentDefinition xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form">
+<form:SimpleForm
+								title="1. Basis informatie"
+								editable="false"
+								layout="ResponsiveGridLayout">
+							<form:content>
+								<Label text="Voornaam"/>
+								<Text id="review_firstname" text="{candidateModel>/firstName}"/>
+
+								<Label text="Achternaam"/>
+								<Text id="review_lastname" text="{candidateModel>/lastName}"/>
+
+								<Label text="Geboortedatum"/>
+								<Text id="review_birthdate" text="{candidateModel>/birthday}"/>
+
+								<Label text="E-mailadres"/>
+								<Text id="review_email" text="{candidateModel>/email}"/>
+
+								<Label text="Taal"/>
+								<Text id="review_language" text="{candidateModel>/language}"/>
+
+								
+							</form:content>
+						</form:SimpleForm>
+
+						<form:SimpleForm
+								title="2. Adres"
+								editable="false"
+								layout="ResponsiveGridLayout">
+							<form:content>
+								<Label text="Stad"/>
+								<Text id="review_city" text="{candidateModel>/address>city}"/>
+
+								<Label text="Postcode"/>
+								<Text id="review_postalcode" text="{candidateModel>/address>postCode}"/>
+
+								<Label text="Straat"/>
+								<Text id="review_street" text="{candidateModel>/address>street}"/>
+
+								<Label text="Nummer"/>
+								<Text id="review_number" text="{candidateModel>/address>number}"/>
+
+								<Label text="Bus"/>
+								<Text id="review_appartment" text="{candidateModel>/address>appartment}"/>
+
+								<Label text="Land"/>
+								<Text id="review_country" text="{candidateModel>/address>country}"/>		
+							</form:content>
+						</form:SimpleForm>
+
+						<form:SimpleForm
+								title="3. Werk informatie"
+								editable="false"
+								layout="ResponsiveGridLayout">
+							<form:content>
+								<Label text="Afdeling"/>
+								<Text id="review_department" text="{candidateModel>/department_code}"/>		
+
+								<Label text="Contract type"/>
+								<Text id="review_contract" text="{candidateModel>/contract_code}"/>
+
+								<Label text="Rapporteer naar"/>
+								<Text id="review_report" text="{candidateModel>/rapportTo}"/>
+
+								<Label text="Start datum"/>
+								<Text id="review_startdate" text="{candidateModel>/startdate}"/>	
+
+								<Label text="Afdeling"/>
+								<Text id="review_lengthOfService" text="{candidateModel>/lengthOfService}"/>		
+	
+							</form:content>
+						</form:SimpleForm>
+
+
+
+</core:FragmentDefinition>

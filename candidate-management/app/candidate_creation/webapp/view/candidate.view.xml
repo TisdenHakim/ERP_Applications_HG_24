@@ -16,8 +16,8 @@
 		xmlns:mvc="sap.ui.core.mvc"
 		xmlns="sap.m">
 		<NavContainer id="wizardNavContainer">
-			<pages>
-				<Page
+		<pages>
+			<Page
 				id="wizardContentPage"
 				showHeader="false">
 					<content>
@@ -36,8 +36,23 @@
 							<Button text="Cancel" press="handleWizardCancel"/>
 						</OverflowToolbar>
 					</footer>
-				</Page>
-			</pages>
+			</Page>
+
+			<Page id="wizardReviewPage" showHeader="false">
+					<content>
+					<core:Fragment fragmentName="candidatecreation.view.fragments.Review" type="XML" />
+					</content>
+					<footer>
+						<Bar>
+							<contentRight>
+								<Button text="Submit" press="handleWizardSubmit"/>
+								<Button text="Cancel" press="handleWizardCancel"/>
+							</contentRight>
+						</Bar>
+					</footer>
+			</Page>
+
+		</pages>
 		</NavContainer>
 </mvc:View>
 
